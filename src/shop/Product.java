@@ -2,7 +2,7 @@ package shop;
 
 import java.util.Arrays;
 
-public enum Shop {
+public enum Product {
 
     BOOK ("Книга", 100),
     FOOD ("Еда", 54),
@@ -12,20 +12,16 @@ public enum Shop {
     private final String productName;
     private final int price;
 
-    Shop(String productName, int price) {
+    Product(String productName, int price) {
         this.productName = productName;
         this.price = price;
     }
 
-    static String getProducts() {
-        return Arrays.toString(Shop.values());
-    }
-
-    int getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    String getProductName() {
+    public String getProductName() {
         return productName;
     }
 

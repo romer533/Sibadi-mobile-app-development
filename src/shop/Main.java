@@ -1,6 +1,7 @@
 package shop;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -24,32 +25,18 @@ public class Main {
         clients.add(new Client("Антон"));
 
         System.out.println("В магазине имеется:");
-        System.out.println(Shop.getProducts());
+        System.out.println(Arrays.toString(Product.values()));
 
         for (int i = 0; i < num;  i ++) {
             int numOrders = (int) (Math.random() * 5);
             if (clients.get(i).getMoney() == 0)
-                System.out.println(clients.get(i).entry((int) (Math.random() * 500)));
+                clients.get(i).enter((int) (Math.random() * 500));
             else
-                System.out.println(clients.get(i).entry());
+                clients.get(i).enter();
             for (int j = 0; j < numOrders; j++) {
-                int product = (int) (Math.random() * 4);
-                switch (product) {
-                    case 0:
-                        clients.get(i).buy(Shop.BOOK);
-                        break;
-                    case 1:
-                        clients.get(i).buy(Shop.FOOD);
-                        break;
-                    case 2:
-                        clients.get(i).buy(Shop.WATER);
-                        break;
-                    case 3:
-                        clients.get(i).buy(Shop.TEA);
-                        break;
-                }
+                clients.get(i).buy(Product.values()[(int) (Math.random() * 4)]);
             }
-            System.out.println(clients.get(i).exit(clients.get(i).getMoney()));
+            clients.get(i).exit(clients.get(i).getMoney());
         }
     }
 

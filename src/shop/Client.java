@@ -1,6 +1,6 @@
 package shop;
 
-public class Client implements Buy, Entry, Exit {
+public class Client implements Buyer {
 
     private final String name;
     private int money;
@@ -17,26 +17,14 @@ public class Client implements Buy, Entry, Exit {
         this.money = money;
     }
 
-    private int endedPrice(Shop product) {
+    private int endedPrice(Product product) {
         return product.getPrice() - product.getPrice() * discount / 100;
     }
 
     @Override
-    public void buy(Shop product) {
+    public void buy(Product product) {
 
-        switch (numberOfOrders) {
-            case 0: discount = 0;
-            break;
-            case 2:
-            case 1: discount = 10;
-            break;
-            case 4:
-            case 3: discount = 20;
-            break;
-            default:
-            case 5: discount = 30;
-            break;
-        }
+        getDiscount();
 
         if (money < endedPrice(product)) {
             System.out.println("Не хватает денег для покупки " + product.getProductName() + ".\n" +
@@ -54,20 +42,36 @@ public class Client implements Buy, Entry, Exit {
         return money;
     }
 
+    private void getDiscount() {
+        switch (numberOfOrders) {
+            case 0: discount = 0;
+                break;
+            case 2:
+            case 1: discount = 10;
+                break;
+            case 4:
+            case 3: discount = 20;
+                break;
+            default:
+            case 5: discount = 30;
+                break;
+        }
+    }
+
     @Override
-    public String entry(int money) {
+    public void enter(int money) {
         this.money = money;
-        return name + " зашел в магазин, у него в кармане " + this.money;
+        System.out.println(name + " зашел в магазин, у него в кармане " + this.money);
     }
 
     @Override
-    public String entry() {
-        return name + " зашел в магазин, у него в кармане " + this.money;
+    public void enter() {
+        System.out.println(name + " зашел в магазин, у него в кармане " + this.money);
     }
 
 
     @Override
-    public String exit(int money) {
-        return name + " ушел из магазина, у него осталось " + money;
+    public void exit(int money) {
+        System.out.println(name + " ушел из магазина, у него осталось " + money);
     }
 }
