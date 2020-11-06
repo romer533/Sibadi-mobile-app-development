@@ -19,7 +19,7 @@ public class Main {
         clients.add(new Client("Юрий"));
         clients.add(new Client("Геннадий"));
         clients.add(new Client("Иван"));
-        clients.add(new Client("Рустам", 500));
+        clients.add(new Client("Рустам", 600));
         clients.add(new Client("Руслан"));
         clients.add(new Client("Арсений"));
         clients.add(new Client("Антон"));
