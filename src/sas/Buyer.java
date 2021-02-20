@@ -2,7 +2,7 @@ package sas;
 
 public final class Buyer {
 
-    private String name;
+    private final String name;
     private int money;
     private int numberOfPots;
 
@@ -26,5 +26,9 @@ public final class Buyer {
 
     public void setMoney(int money) {
         this.money += money;
+    }
+
+    public void plusNumberOfPots() {
+        this.numberOfPots++;
     }
 }

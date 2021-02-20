@@ -2,14 +2,12 @@ package sas;
 
 public final class Provider {
 
-    private final int numberOfPots;
+    private int numberOfPots;
     private final int potPrice;
-    private final String potName;
 
     public Provider(int potPrice, int numberOfPots) {
         this.numberOfPots = numberOfPots;
         this.potPrice = potPrice;
-        this.potName = "Pot";
     }
 
     public int getNumberOfPots() {
@@ -20,7 +18,8 @@ public final class Provider {
         return potPrice;
     }
 
-    public String getPotName() {
-        return potName;
+    public void minusNumberOfPots() {
+        this.numberOfPots--;
     }
+
 }

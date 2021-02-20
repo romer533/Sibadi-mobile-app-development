@@ -3,15 +3,13 @@ package sas;
 public final class Seller {
 
     private int numberOfPots;
-    private int potPrice;
+    private final int potPrice;
     private int money;
-    private String potName;
 
     public Seller(int potPrice, int numberOfPots, int money) {
         this.numberOfPots = numberOfPots;
         this.potPrice = potPrice;
         this.money = money;
-        this.potName = "Pot";
     }
 
     public void setMoney(int money) {
@@ -26,11 +24,16 @@ public final class Seller {
         return potPrice;
     }
 
-    public String getPotName() {
-        return potName;
-    }
-
     public int getMoney() {
         return money;
     }
+
+    public void plusNumberOfPots() {
+        this.numberOfPots++;
+    }
+
+    public void minusNumberOfPots() {
+        this.numberOfPots--;
+    }
+
 }
